@@ -32,7 +32,7 @@ class Repository(object):
             return ignore_rule.git2rsync(lines, self._path)
 
     def _do_sync(self):
-        print 'Start to sync.'
+        print('Start to sync.')
         rsync = subprocess.Popen(['rsync', '-av', '--delete',
                                   '--exclude=.git/', '--exclude-from=-',
                                   self._path, self._remote_path],

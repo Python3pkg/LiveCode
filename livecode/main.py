@@ -29,7 +29,7 @@ class LiveCodeEventHandler(FileSystemEventHandler):
             return
         if ignore_rule.is_git_ignored(event.src_path):
             return
-        print '[%s %s] %s.' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), event.event_type.upper(), event.src_path)
+        print('[%s %s] %s.' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), event.event_type.upper(), event.src_path))
         self._repo.sync()
 
 
@@ -44,13 +44,13 @@ def main():
     remote_path = args.remote_path.rstrip('/')
 
     if not Repository.validate_path(path):
-        print 'ERROR: Not a git repository.'
+        print('ERROR: Not a git repository.')
         exit(1)
 
     os.chdir(path)
     repo = Repository(path, remote_path)
 
-    print 'Sync on startup.'
+    print('Sync on startup.')
     repo.sync()
 
     if args.sync_only:
